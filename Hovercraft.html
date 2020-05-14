@@ -15,22 +15,22 @@
 		var disp_alpha = document.getElementById("alpha");
 		var disp_beta = document.getElementById("beta");
 		var disp_gamma = document.getElementById("gamma");
-
-
+		
+		//force it to be secure connection
+		if(window.location.href.split(":")[0] != "https"){
+		    window.location.href = window.location.href.replace("http", "https");
+		}
+		
 		function onClick() {
 			// feature detect
 			if (typeof DeviceOrientationEvent.requestPermission === 'function') {
-				alert("You should be prompted for permission");
 				DeviceOrientationEvent.requestPermission()
 				.then(permissionState => {
-					alert(permissionState);
 					if (permissionState === 'granted') {
-						alert("Adding listener");
 						window.addEventListener('deviceorientation', (event) => {
 							disp_alpha = event.alpha;
 							disp_beta = event.beta;
 							disp_gamma = event.gamma;
-							alert(event);
 						});
 					}
 				})
