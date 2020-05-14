@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	
+	<body>
+
+	<h1>This is a Gyro Test</h1>
+
+	<div>Rotation alpha:<p id="alpha"></p></div>
+	<div>Rotation beta:<p id="beta"></p></div>
+	<div>Rotation gamma:<p id="gamma"></p></div>
+
+	</body>
+	
+	<script>
+		var disp_alpha = document.getElementById("alpha");
+		var disp_beta = document.getElementById("beta");
+		var disp_gamma = document.getElementById("gamma");
+
+
+		function onClick() {
+			// feature detect
+			if (typeof DeviceOrientationEvent.requestPermission === 'function') {
+				DeviceOrientationEvent.requestPermission()
+				.then(permissionState => {
+					if (permissionState === 'granted') {
+						window.addEventListener('deviceorientation', (event) => {
+							disp_alpha = event.alpha;
+							disp_beta = event.beta;
+							disp_gamma = event.gamma;
+							console.log(event);
+						});
+					}
+				})
+				.catch(console.error);
+			} else {
+				// handle regular non iOS 13+ devices
+			}
+		}
+	</script>
+	
+</html>
