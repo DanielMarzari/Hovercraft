@@ -23,8 +23,9 @@
 				alert("You should be prompted for permission");
 				DeviceOrientationEvent.requestPermission()
 				.then(permissionState => {
-					alert("waiting for data");
+					alert(permissionState);
 					if (permissionState === 'granted') {
+						alert("Adding listener");
 						window.addEventListener('deviceorientation', (event) => {
 							disp_alpha = event.alpha;
 							disp_beta = event.beta;
