@@ -20,14 +20,16 @@
 		function onClick() {
 			// feature detect
 			if (typeof DeviceOrientationEvent.requestPermission === 'function') {
+				alert("You should be prompted for permission");
 				DeviceOrientationEvent.requestPermission()
 				.then(permissionState => {
+					alert("waiting for data");
 					if (permissionState === 'granted') {
 						window.addEventListener('deviceorientation', (event) => {
 							disp_alpha = event.alpha;
 							disp_beta = event.beta;
 							disp_gamma = event.gamma;
-							console.log(event);
+							alert(event);
 						});
 					}
 				})
