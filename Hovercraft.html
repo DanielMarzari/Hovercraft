@@ -24,17 +24,16 @@
 		function onClick() {
 			// feature detect
 			if (typeof DeviceOrientationEvent.requestPermission === 'function') {
-				DeviceOrientationEvent.requestPermission()
-				.then(permissionState => {
+				DeviceOrientationEvent.requestPermission().then(permissionState => {
 					if (permissionState === 'granted') {
+						alert("Accessed Gyroscope");
 						window.addEventListener('deviceorientation', (event) => {
-							disp_alpha = event.alpha;
-							disp_beta = event.beta;
-							disp_gamma = event.gamma;
+							disp_alpha.innerText = event.alpha;
+							disp_beta.innerText  = event.beta;
+							disp_gamma.innerText  = event.gamma;
 						});
 					}
-				})
-				.catch(console.error);
+				}).catch(console.error);
 			} else {
 				alert("You cannot access the orientation");
 			}
