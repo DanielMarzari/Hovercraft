@@ -20,6 +20,10 @@ router.get('/',function(req, res){
   res.sendFile(path.join(__dirname+'/Hovercraft.html'));
 });
 
+router.get('/OPIX',function(req, res){
+  res.sendFile(path.join(__dirname+'/opix.json'));
+});
+
 //add the router
 app.use('/', router);
 app.listen(PORT, function(){
