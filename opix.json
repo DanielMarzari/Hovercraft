@@ -1,0 +1,12 @@
+{
+	"Monday": {
+		"Schedule1" : {
+			"Start" : 7,
+			"End" : 12
+		},
+		"Schedule2" : {
+			"Start" : 13,
+			"End" : 17
+		}
+	}
+}
