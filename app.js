@@ -31,8 +31,8 @@ router.get('/opix_push',function(req, res){
       json += chunk.toString(); // convert Buffer to string
    });
    req.on('end', () => {
-       res.write(JSON.stringify({"response": data}));
-		res.end();
+       res.write(JSON.stringify({"response": json}));
+	res.end();
    });
 });
 
