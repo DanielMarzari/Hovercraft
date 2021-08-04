@@ -5,28 +5,34 @@ const app = express();
 const router = express.Router();
 const http = require('http');
 
-var json = '';
+let json = '';
 
 app.use(
   express.urlencoded({
     extended: true
   })
-)
+);
+
 app.use(express.json())
 
 app.post('/opix_post', (req, res) => {
-  console.log(req.body);
-  json = req.body;
-  res.end()
-})
+	console.log("post req");
+	json = req.body;
+	console.log(json);
+	res.end();
+});
 
-app.get('/',function(req, res){
-  res.sendFile(path.join(__dirname+'/Hovercraft.html'));
+app.put('/opix_put/:val', (req, res) => {
+	console.log("put req");
+	json = req.body;
+	console.log(json);
+	res.end();
 });
 
 app.get('/opix_get',function(req, res){
-  res.write(JSON.stringify({"response": json}));
-  res.end()
+	console.log("get req");
+	res.write(JSON.stringify({"response": json}));
+	res.end();
 });
 
 app.listen(PORT, function(){
