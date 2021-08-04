@@ -20,12 +20,20 @@ router.get('/',function(req, res){
   res.sendFile(path.join(__dirname+'/Hovercraft.html'));
 });
 
-router.get('/OPIX',function(req, res){
-  res.sendFile(path.join(__dirname+'/opix.json'));
+router.get('/opix_get',function(req, res){
+  res.send({"res" : json, "check" : True});
+});
+
+router.get('/opix_push',function(req, res){
+   json = '';
+   //get packet
+   req.on('data', chunk => {
+      json += chunk.toString(); // convert Buffer to string
+   });
 });
 
 //add the router
 app.use('/', router);
 app.listen(PORT, function(){
-	console.log("Listening on port " + PORT);
+   console.log("Listening on port " + PORT);
 });
