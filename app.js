@@ -21,7 +21,7 @@ router.get('/',function(req, res){
 });
 
 router.get('/opix_get',function(req, res){
-  res.send({"res" : json, "check" : True});
+  res.send({"res" :  "You are trying to access data"});
 });
 
 router.get('/opix_push',function(req, res){
@@ -30,6 +30,7 @@ router.get('/opix_push',function(req, res){
    req.on('data', chunk => {
       json += chunk.toString(); // convert Buffer to string
    });
+    res.send(json);
 });
 
 //add the router
