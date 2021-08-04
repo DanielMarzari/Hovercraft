@@ -17,6 +17,7 @@ app.use(express.json())
 app.post('/opix_post', (req, res) => {
   console.log(req.body);
   json = req.body;
+  res.end()
 })
 
 app.get('/',function(req, res){
@@ -25,6 +26,7 @@ app.get('/',function(req, res){
 
 app.get('/opix_get',function(req, res){
   res.write(JSON.stringify({"response": json}));
+  res.end()
 });
 
 app.listen(PORT, function(){
