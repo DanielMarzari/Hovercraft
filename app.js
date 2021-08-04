@@ -30,7 +30,9 @@ router.get('/opix_push',function(req, res){
    req.on('data', chunk => {
       json += chunk.toString(); // convert Buffer to string
    });
-    res.send(json);
+   req.on('end', () => {
+       res.send(json);
+   });
 });
 
 //add the router
